@@ -1,0 +1,65 @@
+.registration-form-container {
+  /* width: 100%; */
+  /* max-width: 500px; */
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+
+}
+
+.registration-form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.registration-form-container label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.registration-form-container input[type="text"],
+.registration-form-container input[type="email"],
+.registration-form-container input[type="password"],
+.registration-form-container input[type="date"],
+.registration-form-container select {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.registration-form-container input[type="checkbox"] {
+  width: auto;
+  margin-right: 5px;
+}
+
+.registration-form-container button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.registration-form-container button:hover {
+  background-color: #0056b3;
+}
+
+.registration-form-container .error {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.registration-form-container .otp-form {
+  text-align: center;
+}

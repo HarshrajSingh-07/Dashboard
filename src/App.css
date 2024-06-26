@@ -30,3 +30,10 @@
 .nav-links li a:hover {
   text-decoration: underline;
 }
+
+.loginBtn {
+  background-color: #007bff;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 2px;
+}

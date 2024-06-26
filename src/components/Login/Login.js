@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Login = ({ setLoggedOut, loggedOut }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -26,7 +26,8 @@ const Login = () => {
         console.log(data.data.user.accessToken);
         sessionStorage.setItem("token", data.data.user.accessToken);
         sessionStorage.setItem("userData", JSON.stringify(data.data.user));
-        alert("Login successful:", data);
+        alert("Login successful");
+        setLoggedOut(false);
         window.location.pathname = "/";
       }
     } catch (error) {
@@ -57,7 +58,7 @@ const Login = () => {
           />
         </div>
         <button type="submit">Login</button>
-        <p style={{ marginTop: "10px" }}>
+        <p className="formFooter">
           Not registered? <Link to="/register">Register here</Link>.
         </p>
       </form>

@@ -1,18 +1,30 @@
 import "./App.css";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import FormComponent from "./components/Registration/Registration";
 import Dashboard from "./components/dashboard/dashboard";
 import Login from "./components/Login/Login";
-import { Link } from "react-router-dom";
 import ProtectedRoute from "./components/ProtectedRoute";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [loggedOut, setLoggedOut] = useState(true);
+
+  useEffect(() => {
+    const token = sessionStorage.getItem("token");
+    if (token) {
+      setLoggedOut(false);
+    } else {
+      setLoggedOut(true);
+    }
+  }, []);
+
   const handleLogout = () => {
     const userConfirmed = window.confirm("Are you sure you want to logout?");
 
     if (userConfirmed) {
       // Clear session storage and redirect to the login page if user confirmed
       sessionStorage.clear();
+      setLoggedOut(true);
       setTimeout(() => {
         window.location.pathname = "/login";
       }, 1000);
@@ -30,21 +42,32 @@ function App() {
             <li>
               <Link to="/register">Register</Link>
             </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
+
             <li>
               <Link to="/">Dashboard</Link>
             </li>
             <li>
-              <button onClick={handleLogout}>Log Out</button>
+              {!loggedOut ? (
+                <button className="logoutBtn" onClick={handleLogout}>
+                  Log Out
+                </button>
+              ) : (
+                <button className="loginBtn">
+                  <Link to="/login">Login</Link>
+                </button>
+              )}
             </li>
           </ul>
         </nav>
         <div className="App">
           <Routes>
             <Route path="/register" element={<FormComponent />} />
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={
+                <Login setLoggedOut={setLoggedOut} loggedOut={loggedOut} />
+              }
+            />
             <ProtectedRoute path="/" element={<Dashboard />} />
           </Routes>
         </div>

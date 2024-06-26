@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-a {
-  text-decoration: none;
-  color: red;
-}
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -61,4 +56,10 @@ form button {
 
 form button:hover {
   background-color: #0056b3;
+}
+
+.formFooter a {
+  text-decoration: none;
+  margin-top: 10px;
+  color: #007bff;
 }
